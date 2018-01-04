@@ -30,6 +30,20 @@ Then, you can access to the api in localhost :
 curl -X GET -H "Content-Type: application/json" -d '{"foo":"bar"}' localhost:5000/api/
 ```
 
+## Usage with Docker
+
+To use it in a Docker container, just build it :
+
+```
+docker build -t myapi .
+```
+
+Then run it :
+
+```
+docker run -p 127.0.0.1:5000:80 myapi
+```
+
 ## Syntax
 
 You can check the syntax using pylint (you must have pylint package installed first) :
