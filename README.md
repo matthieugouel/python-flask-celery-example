@@ -1,17 +1,17 @@
-# api
+# Python3 Restful Flask API skeleton
 
 ## Installation
 
 If you want to install the package :
 
 ```
-$ pip install .
+pip install .
 ```
 
 You can also directly install the package with the dev requirements :
 
 ```
-$ pip install . -r requirements-dev.txt
+pip install . -r requirements-dev.txt
 ```
 
 Note : You may want to install it in a virtual environment.
@@ -65,7 +65,7 @@ To see the test coverage, you must install the package with the dev requirements
 Then, you can run the coverage with the following command :
 
 ```
-$ coverage run --source api -m py.test
+coverage run --source api -m py.test
 ```
 
 Or with tox (you must have tox package installed first) :
