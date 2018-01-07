@@ -1,4 +1,4 @@
-# Python3 Restful Flask API skeleton
+# Python3 Flask Rest API skeleton
 
 ## Installation
 
@@ -27,7 +27,7 @@ python run.py
 Then, you can access to the api in localhost :
 
 ```
-curl -X GET -H "Content-Type: application/json" -d '{"foo":"bar"}' localhost:5000/api/
+curl -X GET -H "Content-Type: application/json" -d '{"foo":"bar"}' localhost:5000/api/hello
 ```
 
 ## Usage with Docker

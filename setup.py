@@ -1,4 +1,4 @@
-"""Setup file for api package."""
+"""Setup module of the package."""
 import uuid
 
 __author__ = 'Matthieu Gouel <matthieu.gouel@gmail.com>'

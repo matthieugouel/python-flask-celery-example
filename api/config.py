@@ -1,4 +1,4 @@
-"""Configuration module."""
+"""Application Configuration."""
 import os
 
 # Disable pylint "Too few public methods" warnings
@@ -11,6 +11,10 @@ class Config(object):
     DEBUG = False
     CSRF_ENABLED = True
     SECRET = os.getenv('SECRET')
+
+    TITLE = "Flask API skeleton"
+    VERSION = "0.1.0"
+    DESCRIPTION = "An API Skeleton."
 
 
 class DevelopmentConfig(Config):
@@ -39,10 +43,10 @@ class ProductionConfig(Config):
     TESTING = False
 
 
-# Disable pylint "Invalid constatnt name" warnings
+# Disable pylint "Invalid constant name" warnings
 # pylint: disable=C0103
 
-api_config = {
+config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
     'staging': StagingConfig,

@@ -1,48 +1,50 @@
 """Initialization module of the package."""
-# Disable pylint "Unable to import ..." warnings
+# Disable pylint "Unable to import" warnings
 # pylint: disable=E0401
 
 # Flask based imports
-from flask import Flask, Blueprint
-from flask_restful import Api
+from flask import Flask
 
-# API Configuraion imports
-from api.config import api_config
+# API configuration imports
+from api.config import Config, config
 
 # API Resources imports
-from api.resources.main import HelloWorld
+from api.resources import api
 
-# Package version handling
+
+# Version handling
 import pkg_resources
 
 try:
+    # If the app is packaged
+    # Get the version of the setup package
     __version__ = pkg_resources.get_distribution('api').version
 except pkg_resources.DistributionNotFound:
-    __version__ = "Not installed"
+    # If app is not used as a package
+    # Hardcoded configuration version
+    __version__ = Config.VERSION
 
 
-# Disable pylint "Invalid constatnt name" warnings
+# Disable pylint "Invalid constant name" warnings
 # pylint: disable=C0103
 
-# API creation
-def create_app(config_name):
-    """API Creation."""
+def create_app(config_name, **kwargs):
+    """Entrypoint of the application."""
     # App instanctiation
-    app = Flask(__name__)
+    app = Flask(__name__, **kwargs)
 
-    # Confiuration options
-    app.config.from_object(api_config[config_name])
+    # Configuration options
+    app.config.from_object(config[config_name])
     app.config.from_pyfile('config.py')
 
-    # API instanciation
-    api_bp = Blueprint('api', __name__)
-    api = Api(api_bp)
+    # Swagger documentation options
+    app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
+    app.config.SWAGGER_UI_JSONEDITOR = True
 
-    # Resources registration
-    api.add_resource(HelloWorld, '/')
-    app.register_blueprint(api_bp, url_prefix='/api')
+    # API registration
+    api.init_app(app)
 
     return app
 
 
-__all__ = ['HelloWorld']
+__all__ = ('HelloWorld')
