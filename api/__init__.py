@@ -9,7 +9,7 @@ from flask import Flask
 from api.config import Config, config
 
 # API Resources imports
-from api.resources import api
+from api.resources import blueprint
 
 
 # Version handling
@@ -19,7 +19,7 @@ try:
     # If the app is packaged
     # Get the version of the setup package
     __version__ = pkg_resources.get_distribution('api').version
-except pkg_resources.DistributionNotFound:
+except pkg_resources.DistributionNotFound:  # pragma: no cover
     # If app is not used as a package
     # Hardcoded configuration version
     __version__ = Config.VERSION
@@ -42,7 +42,7 @@ def create_app(config_name, **kwargs):
     app.config.SWAGGER_UI_JSONEDITOR = True
 
     # API registration
-    api.init_app(app)
+    app.register_blueprint(blueprint)
 
     return app
 

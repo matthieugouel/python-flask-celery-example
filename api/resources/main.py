@@ -7,7 +7,7 @@ from flask_restplus import Resource, Namespace
 # Disable pylint "Invalid constant name" warnings
 # pylint: disable=C0103
 
-api = Namespace('main', description='Main API namespace.')
+api = Namespace(name='', description='Main API namespace.')
 
 
 # Disable pylint "Too few public methods" warnings
