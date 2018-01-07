@@ -27,7 +27,7 @@ python run.py
 Then, you can access to the api in localhost :
 
 ```
-curl -X GET -H "Content-Type: application/json" -d '{"foo":"bar"}' localhost:5000/api/hello
+curl -X GET -H "Content-Type: application/json" localhost:5000/api/hello/test
 ```
 
 ## Usage with Docker
