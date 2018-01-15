@@ -1,9 +1,6 @@
 """Application Configuration."""
 import os
 
-# Disable pylint "Too few public methods" warnings
-# pylint: disable=R0903
-
 
 class Config(object):
     """Parent configuration class."""
@@ -42,9 +39,6 @@ class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
 
-
-# Disable pylint "Invalid constant name" warnings
-# pylint: disable=C0103
 
 config = {
     'development': DevelopmentConfig,

@@ -5,4 +5,6 @@ COPY requirements.txt /tmp/
 RUN pip install -U pip
 RUN pip install -r /tmp/requirements.txt
 
+ENV APP_ENVIRONMENT production
+
 COPY . /app

@@ -1,19 +1,19 @@
-"""Main run file."""
+"""Main entrypint of the application."""
 import os
 
 # Api based imports
 from api import create_app
 
-# Disable pylint "Invalid constant name" warnings
-# pylint: disable=C0103
-config_name = os.getenv('APP_SETTINGS')
+# Try to get the environment from an environment variable
+environment = os.getenv('APP_ENVIRONMENT')
 
-# If environment variable not present, then default configuration
-if not config_name:
-    config_name = 'default'
+# Force the environment to default if not already set
+if not environment:
+    environment = 'default'
 
-# App creation
-app = create_app(config_name)
+# Create flask instance
+app = create_app(environment)
 
 if __name__ == '__main__':
+    # Actually run the application
     app.run()

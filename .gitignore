@@ -52,15 +52,13 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-.idea
-.DS_Store
-
-env
-*.swp
-
-.vagrant
-
-tags
-
 # Gitlab CI/CD
 .gitlab-ci.yml
+
+# Others
+.idea
+.DS_Store
+env
+*.swp
+.vagrant
+tags

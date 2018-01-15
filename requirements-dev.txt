@@ -1,8 +1,6 @@
-pylint
+pylama
 pytest
 pytest-cov
-pylama
 coverage
-sphinx
 werkzeug
 -rrequirements.txt

@@ -1,6 +1,4 @@
 """Test Configuration."""
-# Disable pylint "Unable to import" warnings
-# pylint: disable=E0401
 import pytest
 
 # Flask based imports
@@ -13,14 +11,10 @@ from api import create_app
 from utils import JSONResponse
 
 
-# Disable pylint "Redifining name from outer scpe" warnings
-# pylint: disable=W0621
-
 @pytest.yield_fixture(scope='session')
 def flask_app():
     """Fixture of application creation."""
-    app = create_app(config_name='testing')
-
+    app = create_app(environment='testing')
     with app.app_context():
         yield app
 

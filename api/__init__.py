@@ -1,16 +1,9 @@
 """Initialization module of the package."""
-# Disable pylint "Unable to import" warnings
-# pylint: disable=E0401
-
 # Flask based imports
 from flask import Flask
 
 # API configuration imports
 from api.config import Config, config
-
-# API Resources imports
-from api.resources import blueprint
-
 
 # Version handling
 import pkg_resources
@@ -25,21 +18,21 @@ except pkg_resources.DistributionNotFound:  # pragma: no cover
     __version__ = Config.VERSION
 
 
-# Disable pylint "Invalid constant name" warnings
-# pylint: disable=C0103
-
-def create_app(config_name, **kwargs):
-    """Entrypoint of the application."""
-    # App instanctiation
+def create_app(environment, **kwargs):
+    """Setup of the application."""
+    # App instantiation
     app = Flask(__name__, **kwargs)
 
-    # Configuration options
-    app.config.from_object(config[config_name])
+    # App configuration
+    app.config.from_object(config[environment])
     app.config.from_pyfile('config.py')
 
-    # Swagger documentation options
+    # Swagger documentation
     app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
     app.config.SWAGGER_UI_JSONEDITOR = True
+
+    # API Resources imports
+    from api.resources import blueprint
 
     # API registration
     app.register_blueprint(blueprint)

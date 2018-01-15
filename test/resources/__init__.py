@@ -1,1 +1,1 @@
-"""Initialization module of test resources subpackage."""
+"""Initialization module of Resources Test."""
