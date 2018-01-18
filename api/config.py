@@ -13,6 +13,10 @@ class Config(object):
     VERSION = "0.1.0"
     DESCRIPTION = "An API Skeleton."
 
+    CELERY_BROKER_URL = 'redis://localhost:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+    BROKER_URL = CELERY_BROKER_URL
+
 
 class DevelopmentConfig(Config):
     """Configurations for Development."""
@@ -31,6 +35,10 @@ class StagingConfig(Config):
     """Configurations for Staging."""
 
     DEBUG = True
+
+    CELERY_BROKER_URL = 'redis://redis:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+    BROKER_URL = CELERY_BROKER_URL
 
 
 class ProductionConfig(Config):

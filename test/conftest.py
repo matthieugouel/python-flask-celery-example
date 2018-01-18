@@ -5,18 +5,30 @@ import pytest
 from flask.testing import FlaskClient
 
 # API based imports
-from api import create_app
+from api import Factory
 
 # Test based imports
 from utils import JSONResponse
 
 
 @pytest.yield_fixture(scope='session')
-def flask_app():
+def factory_app():
+    """Fixture of factory with testing environment."""
+    yield Factory(environment='testing')
+
+
+@pytest.yield_fixture(scope='session')
+def flask_app(factory_app):
     """Fixture of application creation."""
-    app = create_app(environment='testing')
+    app = factory_app.flask
     with app.app_context():
         yield app
+
+
+@pytest.yield_fixture(scope='session')
+def celery_app(factory_app):
+    """Fixture of celery instance creation."""
+    yield factory_app.celery
 
 
 @pytest.fixture(scope='session')

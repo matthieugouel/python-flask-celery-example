@@ -46,16 +46,16 @@ docker run -p 127.0.0.1:5000:80 myapi
 
 ## Syntax
 
-You can check the syntax using pylint (you must have pylint package installed first) :
+You can check the syntax using pylama (you must have pylama package installed first) :
 
 ```
-pylint --rcfile=setup.cfg api
+pylama api
 ```
 
 Or with tox (you must have tox package installed first) :
 
 ```
-tox -e pylint
+tox -e pylama
 ```
 
 ## Coverage

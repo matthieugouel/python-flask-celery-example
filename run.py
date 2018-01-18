@@ -1,18 +1,15 @@
 """Main entrypint of the application."""
-import os
+# Api factory import
+from api import factory
 
-# Api based imports
-from api import create_app
+# Eventually specifiy the environment is APP_ENVIRONMENT not set
+factory.environment = 'default'
 
-# Try to get the environment from an environment variable
-environment = os.getenv('APP_ENVIRONMENT')
+# Get flask instance
+app = factory.flask
 
-# Force the environment to default if not already set
-if not environment:
-    environment = 'default'
-
-# Create flask instance
-app = create_app(environment)
+# Get celery instance
+celery = factory.celery
 
 if __name__ == '__main__':
     # Actually run the application

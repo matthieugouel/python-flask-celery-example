@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+
+    api:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - "5000:80"
+        links:
+            - redis
+
+    worker:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: celery -A run.celery worker --loglevel=info
+        links:
+            - redis
+
+    redis:
+        image: redis:latest
