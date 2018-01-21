@@ -28,54 +28,63 @@ class Factory(object):
     """Factory of the instance."""
 
     def __init__(self, environment='default'):
-        """Instanciate flask and celery instance."""
+        """Instantiate flask and celery instance."""
         # Get the running environment
-        self.__environment = os.getenv("APP_ENVIRONMENT")
-        if not self.__environment:
-            self.__environment = environment
+        self._environment = os.getenv("APP_ENVIRONMENT")
+        if not self._environment:
+            self._environment = environment
 
         # Configuration constants
         self.config = config
 
         # Flask instantiation
-        self.__app = Flask(__name__)
+        self._flask = Flask(__name__)
 
         # Celery instantiation
-        self.__celery = Celery(__name__)
+        self._celery = Celery(__name__)
 
+        # Configure the application
+        self._configure_app()
+
+    def _configure_app(self):
+        """Configure the application."""
         # Flask configuration
-        self.__app.config.from_object(self.config[self.__environment])
+        self.flask.config.from_object(self.config[self._environment])
 
         # Swagger documentation
-        self.__app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
-        self.__app.config.SWAGGER_UI_JSONEDITOR = True
+        self.flask.config.SWAGGER_UI_DOC_EXPANSION = 'list'
+        self.flask.config.SWAGGER_UI_JSONEDITOR = True
 
         # Celery Configuration
-        self.__celery.conf.update(self.__app.config)
+        self.celery.conf.update(self.flask.config)
 
     @property
     def environment(self):
-        """Getter of environment variable."""
-        return self.__environment
+        """Getter for environment attribute."""
+        return self._environment
 
     @environment.setter
     def environment(self, environment):
-        """Setter of environment variable."""
-        self.__environment = environment
+        """Setter for environment attribute."""
+        # Change the environment
+        self._environment = environment
+
+        # Update applcation settings
+        self._configure_app()
 
     @property
     def flask(self):
         """Getter of flask instance."""
-        return self.__app
+        return self._flask
 
     @property
     def celery(self):
         """Getter of celery instance."""
-        return self.__celery
+        return self._celery
 
     def register(self, blueprint):
         """Register a specified blueprint."""
-        self.__app.register_blueprint(blueprint)
+        self.flask.register_blueprint(blueprint)
 
 
 # Instantiation of the factory
@@ -91,4 +100,4 @@ from api.resources import blueprint
 factory.register(blueprint)
 
 
-__all__ = ('Factory', 'HelloWorld')
+__all__ = ['Factory', 'HelloWorld', 'ByeWorld']

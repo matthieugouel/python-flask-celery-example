@@ -5,7 +5,7 @@ import pytest
 from flask.testing import FlaskClient
 
 # API based imports
-from api import Factory
+from api import factory
 
 # Test based imports
 from utils import JSONResponse
@@ -14,7 +14,8 @@ from utils import JSONResponse
 @pytest.yield_fixture(scope='session')
 def factory_app():
     """Fixture of factory with testing environment."""
-    yield Factory(environment='testing')
+    factory.environment = 'testing'
+    return factory
 
 
 @pytest.yield_fixture(scope='session')

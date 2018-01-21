@@ -2,19 +2,19 @@
 
 ## Installation
 
+Note : The installation into a virtualenv is heavily recommended.
+
 If you want to install the package :
 
 ```
 pip install .
 ```
 
-You can also directly install the package with the dev requirements :
+For development purposes, you can install the package in editable mode with the dev requirements.
 
 ```
-pip install . -r requirements-dev.txt
+pip install -e . -r requirements-dev.txt
 ```
-
-Note : You may want to install it in a virtual environment.
 
 ## Usage
 
@@ -35,13 +35,13 @@ curl -X GET -H "Content-Type: application/json" localhost:5000/api/hello/test
 To use it in a Docker container, just build it :
 
 ```
-docker build -t myapi .
+docker build -t local_api .
 ```
 
 Then run it :
 
 ```
-docker run -p 127.0.0.1:5000:80 myapi
+docker run -p 127.0.0.1:5000:80 local_api
 ```
 
 ## Syntax
@@ -52,15 +52,21 @@ You can check the syntax using pylama (you must have pylama package installed fi
 pylama api
 ```
 
-Or with tox (you must have tox package installed first) :
+You can also use tox (you must have tox package installed first) :
 
 ```
 tox -e pylama
 ```
 
-## Coverage
+## Test coverage
 
-To see the test coverage, you must install the package with the dev requirements (see installation section).
+To execute the test coverage, you must install the package with the dev requirements (see installation section).
+
+Note : You must start redis in localhost in order to pass de tests :
+
+```
+docker run -p 6379:6379 redis:latest
+```
 
 Then, you can run the coverage with the following command :
 
@@ -68,7 +74,7 @@ Then, you can run the coverage with the following command :
 coverage run --source api -m py.test
 ```
 
-Or with tox (you must have tox package installed first) :
+You can also use tox (you must have tox package installed first) :
 
 ```
 tox -e pytest

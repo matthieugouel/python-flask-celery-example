@@ -2,6 +2,11 @@
 import pytest
 
 
+def test_environment(factory_app):
+    """Test of the application environment."""
+    assert factory_app.environment == 'testing'
+
+
 @pytest.mark.parametrize('http_method,http_path', (
     ('GET', '/api/hello/test'),
 ))

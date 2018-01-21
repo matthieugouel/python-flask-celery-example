@@ -2,6 +2,9 @@ version: '2'
 
 services:
 
+    redis:
+        image: redis:latest
+
     api:
         build:
             context: .
@@ -19,6 +22,3 @@ services:
         command: celery -A run.celery worker --loglevel=info
         links:
             - redis
-
-    redis:
-        image: redis:latest
