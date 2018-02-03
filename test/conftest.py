@@ -5,16 +5,24 @@ import pytest
 from flask.testing import FlaskClient
 
 # API based imports
-from api import create_app
+from api import Factory
+from api.resources import blueprint
 
 # Test based imports
 from utils import JSONResponse
 
 
 @pytest.yield_fixture(scope='session')
-def flask_app():
+def factory_app():
+    """Fixture of factory with testing environment."""
+    yield Factory(environment='testing')
+
+
+@pytest.yield_fixture(scope='session')
+def flask_app(factory_app):
     """Fixture of application creation."""
-    app = create_app(environment='testing')
+    app = factory_app.set_flask()
+    factory_app.register(blueprint)
     with app.app_context():
         yield app
 
