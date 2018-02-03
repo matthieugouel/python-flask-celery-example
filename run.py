@@ -11,8 +11,6 @@ app = factory.flask
 # Get celery instance
 celery = factory.celery
 
-print(str(celery.conf))
-
 if __name__ == '__main__':
     # Actually run the application
     app.run()
