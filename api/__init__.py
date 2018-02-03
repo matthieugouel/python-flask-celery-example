@@ -1,10 +1,9 @@
 """Initialization module of the package."""
 # Plugin based imports
 from flask import Flask
-from celery import Celery
 
 # Plugins based imports
-
+from celery import Celery
 
 # API configuration imports
 from api.config import Config, config
@@ -72,8 +71,10 @@ class Factory(object):
 # Instantiation of the factory
 factory = Factory()
 
-# Enable of the desired plugins
+# Enable flask instance
 factory.set_flask()
+
+# Enable of the desired plugins
 factory.set_celery()
 
 # Ignore `module level import not at top of file` warning
