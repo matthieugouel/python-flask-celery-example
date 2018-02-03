@@ -18,6 +18,8 @@ def test_helloworld(http_method, http_path, flask_app_client):
     assert response.json == {'hello': 'test'}
 
 
+# Caution: Redis must be launched in localhost
+# Else it will throw a status code 500
 @pytest.mark.parametrize('http_method,http_path', (
     ('GET', '/api/bye/test'),
 ))
