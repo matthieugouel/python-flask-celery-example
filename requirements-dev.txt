@@ -1,7 +1,8 @@
 tox
-pylama
+flake8
 pytest
 pytest-cov
+pytest-flake8
 coverage
 coveralls
 werkzeug

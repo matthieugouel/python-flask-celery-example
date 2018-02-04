@@ -77,11 +77,8 @@ factory.set_flask()
 # Enable of the desired plugins
 factory.set_celery()
 
-# Ignore `module level import not at top of file` warning
-# pylama: ignore=E402
-
 # API Resources imports
-from api.resources import blueprint
+from api.resources import blueprint  # noqa: E402
 
 # Register the blueprint
 factory.register(blueprint)

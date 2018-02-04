@@ -59,16 +59,16 @@ curl -X GET -H "Content-Type: application/json" localhost:5000/api/bye/test
 
 ## Syntax
 
-You can check the syntax using pylama (you must have pylama package installed first) :
+You can check the syntax using flake8 (you must have flake8 package installed first) :
 
 ```
-pylama api
+flake8 api
 ```
 
 You can also use tox (you must have tox package installed first) :
 
 ```
-tox -e pylama
+tox -e lint
 ```
 
 ## Test coverage
