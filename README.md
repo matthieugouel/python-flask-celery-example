@@ -35,13 +35,13 @@ curl -X GET -H "Content-Type: application/json" localhost:5000/api/hello/test
 To use it in a Docker container, just build it :
 
 ```
-docker build -t local_api .
+docker build -t celery_api .
 ```
 
 Then run it :
 
 ```
-docker run -p 127.0.0.1:5000:80 local_api
+docker run -p 127.0.0.1:5000:80 celery_api
 ```
 
 ## Syntax
