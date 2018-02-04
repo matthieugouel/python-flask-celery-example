@@ -84,5 +84,5 @@ coverage run --source api -m py.test
 You can also use tox (you must have tox package installed first) :
 
 ```
-tox -e pytest
+tox -e test
 ```

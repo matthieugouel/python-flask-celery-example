@@ -3,5 +3,6 @@ pylama
 pytest
 pytest-cov
 coverage
+coveralls
 werkzeug
 -rrequirements.txt
