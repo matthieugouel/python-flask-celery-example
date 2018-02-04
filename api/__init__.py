@@ -25,7 +25,7 @@ except pkg_resources.DistributionNotFound:  # pragma: no cover
 
 
 class Factory(object):
-    """Factory of the api."""
+    """Build the instances needed for the API."""
 
     def __init__(self, environment='default'):
         """Initialize Factory with the proper environment."""
