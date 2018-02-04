@@ -1,4 +1,4 @@
-# Python3 Flask Rest API skeleton
+# Python3 Flask Rest API with Celery example
 
 ## Installation
 
@@ -24,24 +24,31 @@ To start the application, you can use the file run.py :
 python run.py
 ```
 
-Then, you can access to the api in localhost :
+Moreover, to be able to play with celery, you have to first start Redis, then start a celery worker like this :
 
 ```
-curl -X GET -H "Content-Type: application/json" localhost:5000/api/hello/test
+celery -A run.celery worker --loglevel=info
 ```
 
-## Usage with Docker
+Note : It's cleaner to use docker-compose to start the whole application (see the section below).
 
-To use it in a Docker container, just build it :
+## Usage with Docker Compose
 
-```
-docker build -t celery_api .
-```
-
-Then run it :
+In order to start the whole system easily, we can use docker-compose :
 
 ```
-docker run -p 127.0.0.1:5000:80 celery_api
+docker-compose up
+```
+
+It will start three docker containers :
+- Redis
+- Flask API
+- Celery Worker
+
+Then, you can access to the API in localhost :
+
+```
+curl -X GET -H "Content-Type: application/json" localhost:5000/api/bye/test
 ```
 
 ## Syntax
