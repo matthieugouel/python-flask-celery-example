@@ -2,10 +2,6 @@ language: python
 python:
     - "3.6"
 
-branches:
-  only:
-    - "master"
-
 install:
     - pip install -r requirements-dev.txt
 
@@ -16,4 +12,4 @@ script:
     - tox -e test
 
 after_success:
-    coveralls
+    - coveralls
