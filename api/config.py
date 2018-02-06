@@ -37,16 +37,16 @@ class StagingConfig(Config):
 
     DEBUG = True
 
-    CELERY_BROKER_URL = 'redis://redis:6379/0'
-    CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
-    BROKER_URL = CELERY_BROKER_URL
-
 
 class ProductionConfig(Config):
     """Configurations for Production."""
 
     DEBUG = False
     TESTING = False
+
+    CELERY_BROKER_URL = 'redis://redis:6379/0'
+    CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+    BROKER_URL = CELERY_BROKER_URL
 
 
 config = {
