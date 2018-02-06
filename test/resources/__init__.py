@@ -1,1 +1,1 @@
-"""Initialization module of Resources Test."""
+"""Resources tests module."""

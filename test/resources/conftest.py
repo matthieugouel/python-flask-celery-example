@@ -1,5 +1,5 @@
-"""Test Configuration."""
-# Test package used
+"""Resources Test Configuration."""
+# Test library
 import pytest
 
 # Flask based imports
@@ -10,7 +10,7 @@ from api import Factory
 from api.resources import blueprint
 
 # Test based imports
-from utils import JSONResponse
+from .utils import JSONResponse
 
 
 @pytest.yield_fixture(scope='session')

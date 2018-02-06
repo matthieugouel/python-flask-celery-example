@@ -1,0 +1,1 @@
+"""Asynchronous tasks tests module."""
