@@ -1,7 +1,7 @@
 # Python3 Flask Rest API with Celery example
 
 [![Build Status](https://travis-ci.org/MatthieuGouel/python-flask-celery-example.svg?branch=master)](https://travis-ci.org/MatthieuGouel/python-flask-celery-example)
-[![Coverage Status](https://coveralls.io/repos/github/MatthieuGouel/python-flask-celery-example/badge.svg?branch=master)](https://coveralls.io/github/MatthieuGouel/python-flask-celery-example?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/github/MatthieuGouel/python-flask-celery-example.svg)](https://coveralls.io/github/MatthieuGouel/python-flask-celery-example?branch=master)
 [![license](https://img.shields.io/github/license/MatthieuGouel/python-flask-celery-example.svg)](https://github.com/MatthieuGouel/python-flask-celery-example/blob/master/LICENSE)
 
 This project is an example of using Flask-restful and celery to perform asynchronous tasks.
