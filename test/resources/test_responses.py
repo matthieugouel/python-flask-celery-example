@@ -1,4 +1,4 @@
-"""Tests of main resources."""
+"""Tests of API respi."""
 import pytest
 
 

@@ -1,1 +1,1 @@
-"""Resources tests module."""
+"""Resources tests."""

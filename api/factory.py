@@ -27,6 +27,17 @@ class Factory(object):
         """Getter for environment attribute."""
         return self._environment
 
+    @environment.setter
+    def environment(self, environment):
+        # Update environment protected variable
+        self._environment = environment
+
+        # Update Flask configuration
+        self.flask.config.from_object(config[self._environment])
+
+        # Update Celery Configuration
+        self.celery.conf.update(self.flask.config)
+
     def set_flask(self, **kwargs):
         """Flask instantiation."""
         # Flask instance creation

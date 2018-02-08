@@ -10,9 +10,9 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET = os.getenv('SECRET')
 
-    TITLE = "Flask API skeleton"
+    TITLE = "Flask API with Celery"
     VERSION = "0.1.0"
-    DESCRIPTION = "An API Skeleton."
+    DESCRIPTION = "An API Skeleton with Celery."
 
     CELERY_BROKER_URL = 'redis://localhost:6379/0'
     CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
@@ -30,6 +30,8 @@ class TestingConfig(Config):
 
     TESTING = True
     DEBUG = True
+
+    CELERY_ALWAYS_EAGER = True
 
 
 class StagingConfig(Config):

@@ -56,6 +56,9 @@ docs/_build/
 # Gitlab CI/CD
 .gitlab-ci.yml
 
+# Celery
+celeryd.pid
+
 # Others
 .idea
 .DS_Store

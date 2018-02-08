@@ -81,6 +81,11 @@ Note : You must start redis in localhost in order to pass de tests :
 docker run -p 6379:6379 redis:latest
 ```
 
+Moreover, you have to instanciate a worker :
+```
+celery -A run.celery worker --loglevel=info
+```
+
 Then, you can run the coverage with the following command :
 
 ```
