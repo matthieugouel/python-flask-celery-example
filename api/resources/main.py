@@ -1,6 +1,6 @@
 """Entrypoint of the main API Resources."""
 # Useful to simulate a long action
-# from time import sleep
+from time import sleep
 
 # Flask based imports
 from flask_restplus import Resource, Namespace
@@ -40,5 +40,5 @@ class ByeWorld(Resource):
     @celery.task()
     def asynchronous(name):
         """Async long task method."""
-        # sleep(5)
+        sleep(5)
         return {'async': name}

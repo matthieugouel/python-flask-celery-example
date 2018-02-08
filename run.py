@@ -2,6 +2,9 @@
 # Api factory import
 from api import factory
 
+# Eventually force the environment
+# factory.environment = 'default'
+
 # Get flask instance
 app = factory.flask
 

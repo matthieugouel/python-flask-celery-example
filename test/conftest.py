@@ -39,8 +39,8 @@ def flask_app(factory_app):
 def celery_app(factory_app):
     """Fixture of celery instance creation."""
     factory_app.set_flask()
-    factory_app.register(blueprint)
     factory_app.set_celery()
+    factory_app.register(blueprint)
     yield factory_app
 
 
@@ -54,6 +54,6 @@ def flask_app_client(flask_app):
 
 
 @pytest.yield_fixture(scope='session')
-def byeworld(celery_app):
+def byeworld():
     """Fixture of ByeWorld resource."""
-    return ByeWorld()
+    return ByeWorld
