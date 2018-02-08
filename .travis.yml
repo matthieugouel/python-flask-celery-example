@@ -5,10 +5,6 @@ python:
 install:
     - pip install -r requirements-dev.txt
 
-before_script:
-    - docker run -d -p 6379:6379 redis:latest
-    - celery -A run.celery worker --detach
-
 script:
     - tox -e test
 
