@@ -13,10 +13,11 @@ from .utils import JSONResponse
 
 # API asynchronous tasks based imports
 # Using resources classes directly will use factory
-# So we have to import it to set the environment to testing
+# So we have to import it to set the environment to `testing`
 from api import factory
 from api.resources.main import ByeWorld
 
+# Set the factory environment to `testing`
 factory.environment = 'testing'
 
 
