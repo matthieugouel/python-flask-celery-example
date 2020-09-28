@@ -19,6 +19,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        command: celery -A run.celery worker --loglevel=info
+        command: celery -A run.celery worker -l INFO
         links:
             - redis
